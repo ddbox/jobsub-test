@@ -1,0 +1,18 @@
+#!/bin/sh
+cd /jobsub_test/jobsub
+if [ "$1" == "" ]; then
+    branch="master"
+else
+    branch=$1
+fi
+git checkout $branch
+cd test/scripts
+for F in $(cat /jobsub_test/jenkins_scripts); do git checkout master $F; done
+cd /jobsub_test
+source $VIRTUAL_ENV/bin/activate
+branch_dir=output/$(echo $branch| sed -e 's/\//_/g')
+mkdir -p  "$branch_dir/xml_reports"
+./jobsub/test/scripts/run_unittests.sh -ac 2>&1 | tee $branch_dir/unit_test.log
+mv ./jobsub/test/scripts/unittests-reports/* "$branch_dir/xml_reports"
+mv htmlcov* $branch_dir
+mv coverage.report.* $branch_dir
