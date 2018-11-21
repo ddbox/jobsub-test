@@ -5,7 +5,6 @@ language:
 - python
 before_install:
 - git clean -f -d
-- docker run --rm dbox/jobsub-test /bin/sh -c "ls /jobsub_test/glideinwms/build/jenkins" > jenkins_scripts
 - docker build -t dbox/jobsub-test:latest .
 - docker build --build-arg rel=7 -t dbox/jobsub-test:sl7 .
 - docker build --build-arg rel=6 -t dbox/jobsub-test:sl6 .
