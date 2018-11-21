@@ -9,5 +9,6 @@ echo "          new_jobsub_branches N:  show branches that have been changed in 
 echo "    jobsub_quick_tests <branch>:  execute the fast-running unit tests on <branch>"
 echo "   run_jobsub_coverage <branch>:  run a full coverage test on <branch>"
 echo "     run_jobsub_pylint <branch>:  run pylint and pycodestyle on <branch>"
+echo "          run_futurize <branch>:  run futurize on <branch>"
 echo
 
