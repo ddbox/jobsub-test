@@ -17,7 +17,7 @@ fi
 
 cd "$TEST_DIR"
 . "$VIRTUAL_ENV"/bin/activate
-branch_dir=/test_dir/output/$(echo "$branch"| sed -e 's/\//_/g')
+branch_dir="$TEST_DIR"/output/$(echo "$branch"| sed -e 's/\//_/g')
 mkdir -p  "$branch_dir/xml_reports"
 ./jobsub/test/scripts/run_unittests.sh -ac 2>&1 | tee "$branch_dir"/unit_test.log
 mv ./jobsub/test/scripts/unittests-reports/* "$branch_dir/xml_reports"
